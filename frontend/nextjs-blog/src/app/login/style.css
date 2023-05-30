@@ -1,0 +1,133 @@
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow-y: hidden;
+    background-color: rgba(35, 36, 88, 0.97);
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: top, bottom;;
+    background-size: 100% 50%, 80% 50%;
+  }
+  
+  .main .card {
+    height: 50%;
+    width: 47.063rem;
+    max-width: 60.5rem;
+    background-color: white;
+    padding: 2rem 2rem;
+    /* margin: 2rem 2re; */
+    border-radius: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .main .card .form-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .main .card .form-group input[type=text],
+  .main .card .form-group input[type=password],
+  .main .card .form-group input[type=tel] {
+    width: 150%;
+    height: 3.8rem !important;
+  }
+  
+  .main .card .form-group .password_input {
+    display: flex;
+    align-items: center;
+    width: 150%;
+  }
+  
+  .main .card .form-group .password_input input {
+    position: relative;
+    width: 100%;
+  }
+  
+  .main .card .form-group .password_input .password_icon {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 6%;
+    color: #bdbdbd;
+  }
+  
+  .main .card .form-group .password_input .password_icon:hover {
+    cursor: pointer;
+  }
+  
+  .main .card .label {
+    font-weight: 500;
+    font-size: 1.125rem;
+    margin-bottom: 0.3rem;
+    align-self: flex-start;
+  }
+  
+  .main .card .remember_me {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+  .main .card .remember_me label {
+    color: #4f4f4f !important;
+  }
+  
+  .main .card .remember_me label,
+  .main .card .remember_me button {
+    color: #232458;
+  }
+  
+  .main .card .btn-submit {
+    display: flex;
+    justify-content: center;
+    margin-block: 3rem;
+    width: 100%;
+  }
+  
+  .main .card .btn-submit .btn {
+    font-family: "Ubuntu";
+    font-weight: 400;
+    font-size: 1.5rem;
+    background-color: #232458;
+    color: white;
+    border-radius: 25px;
+    width: 90%;
+    height: 3rem;
+  }
+  
+  .main .card .end-btn {
+    font-weight: 400;
+    color: #4f4f4f;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    margin: 0px;
+  }
+  
+  .main .card .end-btn button {
+    font-weight: 500;
+    /* color: #232458; */
+    text-decoration: underline;
+  }
+  
+  .main .card .btn-link {
+    margin: 0 !important;
+    font-size: 1.5rem;
+    margin: 1rem;
+  }
+
+
+  
+  @media screen and (max-width: 767px) {
+  }
