@@ -7,6 +7,7 @@ import Link from "next/link";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import withAuth from "@/app/components/Auth";
 
  const Page = ({params}) => {
 
@@ -29,16 +30,17 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
               }));
               setUpdateBlogData(blog)
           } catch (error) {
-            if (error.response && error.response.status === 401) {
-              alert("You need to log in first");
-              router.push("/login");
-            } else {
-              alert("An error occurred. Please try again.");
-              router.push("/login");
-            }
+            // if (error.response && error.response.status === 401) {
+            //   alert("You need to log in first");
+            //   router.push("/login");
+            console.log(error)
+            // } else {
+            //   alert("An error occurred. Please try again.");
+            //   router.push("/login");
+            // }
           }
         };
-    
+              
          fetchData();        
       }, [id, router]);
 
@@ -50,13 +52,13 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
             router.push("/")
 
              } catch (error) {
-           if (error.response && error.response.status === 401){
-               alert("You need to log in first")
-               router.push('/login')
-           }else{
+        //    if (error.response && error.response.status === 401){
+        //        alert("You need to log in first")
+        //        router.push('/login')
+        //    }else{
                alert("You don't have the permission to perform this action. Only author can do this")
                router.push('/')
-           }
+        //    }
    
    }
     }
@@ -68,16 +70,14 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
             res = await BlogServices.updateBlog(blogData.id, updateBlogData) 
             alert(res)  
             router.push("/")
-
              } catch (error) {
-           if (error.response && error.response.status === 401){
-               alert("You need to log in first")
-               router.push('/login')
-           }else{
-            console.log("Error", error)
+        //    if (error.response && error.response.status === 401){
+        //        alert("You need to log in first")
+        //        router.push('/login')
+        //    }else{
                alert("You don't have the permission to perform this action. Only author of blog can do this")
                router.push('/')
-           }
+        //    }
    }
     }
 
@@ -93,11 +93,11 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
                     <p><h2>Content:</h2> {blogData.content}</p>
                 </div>
                 <div>
-                    <button type="button" className="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    <button type="button" className="btn btn-danger btn-lg m-3" data-bs-toggle="modal" data-bs-target="#exampleModal"
                     > Update 
                     </button>
+                    <button className="btn btn-success btn-lg m-3" onClick={() => handleDeleteBlog(blogData.id)}>Delete</button>
                 </div>
-                <button className="btn btn-success btn-lg mt-1" onClick={() => handleDeleteBlog(blog.id)}>Delete</button>
             </div>
 
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -125,9 +125,9 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
                 </div>
             </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onClick={handleUpdateBlog}>Save changes</button>
+            <div>
+                <button type="button" class="btn btn-danger btn-lg m-2" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary btn-lg m-2" data-bs-dismiss="modal" onClick={handleUpdateBlog}>Save changes</button>
             </div>
             </div>
         </div>
@@ -136,4 +136,4 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
     )
     }
 
- export default Page;
+ export default withAuth(Page);

@@ -12,6 +12,7 @@ const mulish  = Mulish({
     display: 'swap'
   })
 
+  
 const HeroSection = ({title, imageUrl}) => {
     return (
         <main className={hero.main_section}>

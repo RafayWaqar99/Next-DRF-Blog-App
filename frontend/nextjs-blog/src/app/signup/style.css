@@ -40,13 +40,22 @@
   
   .main .card .form-group .password_input {
     display: flex;
+    flex-direction: column;
     align-items: center;
     width: 150%;
-  }
+}
+.main .card .form-group .text_input {
+    display: flex;
+    /* align-self: flex-start ; */
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
   
   .main .card .form-group .password_input input {
     position: relative;
     width: 100%;
+    margin: 1rem;
   }
   
   .main .card .form-group .password_input .password_icon {
@@ -117,7 +126,8 @@
   
   .main .card .end-btn button {
     font-weight: 500;
-    text-decoration: underline;;
+    /* color: #232458; */
+    text-decoration: underline;
   }
   
   .main .card .btn-link {

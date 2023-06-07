@@ -6,22 +6,24 @@ import { getLocalStorageItem } from "../utils/utils";
 const baseURL = "http://127.0.0.1:8000"
 
 
-const fetchBlogs = async () => {
+const fetchBlogs = async (page=1) => {
     const headers = {
         Accept: "application/json",
         Authorization: `JWT ${getLocalStorageItem()}`
     }
-  try {
-    const response = await axios.get(`${baseURL}` + `/blogs/`, {headers});
-    if (response.status === 200) {
+    try {
+      const response = await axios.get(`${baseURL}/blogs/?page=${page}`, {
+        headers
+      });
+  
+      if (response.status === 200) {
         return response.data;
       } else {
-        throw new Error("Authentication failed");
+        throw new Error("Something went wrong");
       }
-  }catch(error){
-    console.log("throwing error in catch", error)
-    throw  error; 
-  } 
+    } catch (error) {
+      throw error;
+    }
 };
 
 const fetchSingleBlog = async (id) => {
@@ -51,6 +53,15 @@ const authenticateUser = async (data) => {
       }
     } catch (error) {
       throw  error.response.data.non_field_errors[0];
+    }
+  };
+
+  const registerUser = async (data) => {
+    try {
+      const response = await axios.post(`${baseURL}/user/register/`, {username: data.username, password: data.password})
+        return response.data;
+    } catch (error) {
+      throw  error.response.data.username;
     }
   };
 
@@ -94,7 +105,7 @@ const updateBlog = async(id, data) => {
         Authorization: `JWT ${getLocalStorageItem()}`
       }
     try {
-        const response = await axios.patch(`${baseURL}/blog/${id}/`,{title:data.title, content: data.content}, {headers})
+        const response = await axios.patch(`${baseURL}/blog/${id}/`,{title:data.title, content: data.content})
         if (response.status === 200) {
           return "Blog successfully updated"
         } else {
@@ -115,6 +126,7 @@ export const BlogServices = {
 };
 
 export const AuthServices = {
-    authenticateUser
+    authenticateUser,
+    registerUser
 }
 

@@ -13,51 +13,7 @@
     font-size: 4.2rem;
 }
 
-.grid{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 5rem;
-    margin: 6rem auto;
-}
-
-.grid_card{
-    padding: 2rem 4rem;
-    text-align: center;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    background-color: #fff;
-}
-
-.grid_card span {
-    display: inline-block;
-    transition: transform 200ms;
-}
-
-.grid_card h2{
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-}
-
-.grid_card p{
-    margin: 0;
-}
-
-.grid_card p:last-child{
-    margin-bottom: 3.2rem;
-}
-
-.grid_card .last_para{
-    margin-bottom: 3.2rem;
-}
-
-.grid_card i{
-    font-size: 4.2rem;
-    color: #e50914;
-}
-
-
-/*for the main contact two section*/
-
-.contact_section{
+.create_blog_section{
     margin: 6rem auto;
     display: flex;
     flex-direction: column;
@@ -67,9 +23,6 @@
 }
 
 
-.contact_section span{
-    color: #e50914;
-}
 
 .create_blog_form{
     max-width: 48rem;
@@ -89,7 +42,7 @@
     text-transform: capitalize;
 }
 
-.contact_form input, .contact_form textarea{
+.create_blog_form input, .create_blog_form textarea{
     display: block;
     border: none;
     width: 100%;

@@ -4,13 +4,17 @@ import "./style.css"
 import { AuthServices } from "../api/api"
 import { useRouter } from "next/navigation"
 import { getLocalStorageItem } from "../utils/utils";
+import Link from "next/link";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 const Login = () => {
 
     const router = useRouter();
   const [data, setData] = useState({
     username: "",
-    password: ""
+    password: "",
   })
   const [errorMsg, setErrorMsg] = useState("")
 
@@ -22,7 +26,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (data?.username && data?.password) {
+      if (data?.username && data?.password) {
       try {
         const token = await AuthServices.authenticateUser({
           username: data.username,
@@ -31,13 +35,13 @@ const Login = () => {
         localStorage.setItem('token', token.access)
         router.push('/blog')
       } catch (error) {
-        setErrorMsg(error)
         alert(errorMsg)
         setData({username: "", password: ""})
       }
-    } else {
-      alert("Email & Password are required!");
-    }
+  }else {
+    alert("Username and password required")
+    return
+  }
   };
 
   return (
@@ -79,12 +83,7 @@ const Login = () => {
 
         <p className="end-btn">
           Don’t have an account?
-          <button
-            type="button"
-            className="btn btn-link custom_link_btn"
-          >
-            Sign up
-          </button>
+          <Link className="link-success m-1" href='/signup' >Sign Up</Link>
         </p>
       </div>
     </div>

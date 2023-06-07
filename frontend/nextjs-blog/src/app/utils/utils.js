@@ -8,7 +8,6 @@ export const getLocalStorageItem = () => {
 
   export const removeLocalStorageItem = () => {
     if (typeof window !== 'undefined') {
-      const value = window.localStorage.removeItem("token")
-      return null
+    window.localStorage.removeItem("token")
     }
   };

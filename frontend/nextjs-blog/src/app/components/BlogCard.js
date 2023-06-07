@@ -2,6 +2,7 @@ import React from "react";
 import styles from "@/app/styles/common.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import withAuth from "./Auth";
 
 const BlogCard = (blog) => {
     const {id, title, content} = blog;
@@ -23,4 +24,4 @@ const BlogCard = (blog) => {
     )
 }
 
-export default BlogCard;
+export default withAuth(BlogCard);

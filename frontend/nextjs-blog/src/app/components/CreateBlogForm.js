@@ -5,6 +5,7 @@ import {Mulish} from "next/font/google";
 import {useEffect, useState} from "react";
 import { BlogServices } from "../api/api";
 import { useRouter } from "next/navigation";
+import withAuth from "./Auth";
 
 const mulish = Mulish({
     subsets: ['latin'],
@@ -57,7 +58,6 @@ const CreateBlogForm = () => {
         <form className={styles.create_blog_form} onSubmit={handleSubmit}>
             <div className={styles.input_field}>
                 <label htmlFor="username" className={styles.label}>
-                    {/* Blog Title  */}
                     <input type="text" name="title" id="title"
                         placeholder="Enter Blog Title"
                            className={mulish.className}
@@ -70,7 +70,6 @@ const CreateBlogForm = () => {
 
             <div className={styles.input_field}>
                 <label htmlFor="content" className={styles.label}>
-                    {/* Content */}
                     <input type="text" name="content" id="content"
                            placeholder="Write content here."
                            className={mulish.className}
@@ -80,16 +79,14 @@ const CreateBlogForm = () => {
                            autoComplete="off"
                     />
                 </label>
+
             </div>
             <div className={styles.input_field}>
                 <label htmlFor="tags" className={styles.label}>
-                    {/* Tags */}
                     <input type="text" name="tags" id="tags"
                            placeholder="Write tags here"
                            className={mulish.className}
-                        //    value={blogData.tags}
                            value={tags}
-                        //    onChange={handleChange}
                            onChange={(e)=> {
                             setTags(e.target.value)           
                         }}
@@ -99,15 +96,8 @@ const CreateBlogForm = () => {
                 </label>
                 <button type="submit" className={mulish.className}>Create</button>
             </div>
-
-            {/* <div>
-                {status === 'success' && <p className={styles.success_msg}>Thank you for your message!</p>}
-                {status === 'error' && <p className={styles.error_msg}>There was an error submitting your message. Please try again.</p>}
-
-                <button type="submit" className={mulish.className}>Send Message</button>
-            </div> */}
         </form>
     );
 };
 
-export default CreateBlogForm;
+export default withAuth(CreateBlogForm);
